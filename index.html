@@ -195,6 +195,9 @@ label.f textarea { min-height: 76px; resize: vertical; }
 .foot { background: var(--maroon-deep); color: rgba(255,255,255,.75); }
 .foot .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-block: 22px 30px; font-size: 13px; }
 .foot a { color: rgba(255,255,255,.75); font-weight: 600; }
+.foot-links { display: inline-flex; gap: 18px; }
+.privacy-note { font-size: 13px; color: var(--muted); margin: 0; }
+.privacy-note a { color: inherit; }
 
 /* Organizer view */
 .owner { padding-block: 32px 56px; display: flex; flex-direction: column; gap: 22px; }
@@ -359,6 +362,7 @@ select.st { border: 1px solid var(--line); border-radius: 4px; padding: 5px 8px;
           <div class="payhow">Questions? Contact Paul Schuster at <b>pschuster3@yahoo.com</b>.<br>Payment is by Venmo to <b>@Schuner31</b>. Hoodies will be delivered by December 15. After you place the order you'll get an order number and a note to paste into your Venmo payment so we can match it up.</div>
           <p class="hint err" id="formErr" hidden></p>
           <button class="btn" type="submit" id="placeBtn">Place order</button>
+          <p class="privacy-note">Your information is used only to contact you about your order and delivery, and will be deleted when the fundraiser is complete. <a href="privacy.html">Privacy policy</a></p>
         </form>
       </div>
 
@@ -408,7 +412,7 @@ select.st { border: 1px solid var(--line); border-radius: 4px; padding: 5px 8px;
 <footer class="foot">
   <div class="wrap">
     <span>Radnor Baseball · RABA hoodie fundraiser</span>
-    <a href="orders.html" rel="nofollow">Organizers</a>
+    <span class="foot-links"><a href="privacy.html">Privacy</a><a href="orders.html" rel="nofollow">Organizers</a></span>
   </div>
 </footer>
 

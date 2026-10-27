@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Privacy Policy</title>
+<link rel="icon" href="images/logo-black.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: athletic team-store. Maroon header, gallery beside a buy box with accordions, then a two-column bag and checkout. */
+:root {
+  --bg: #f4f3f2;
+  --surface: #ffffff;
+  --sunken: #ecebe9;
+  --ink: #141213;
+  --muted: #6b6466;
+  --line: #e1dedc;
+  --maroon: #5b2730;
+  --maroon-deep: #3f1a21;
+  --maroon-ink: #ffffff;
+  --maroon-soft: #f3e7e9;
+  --ok: #2f6b45;
+  --warn: #8a5a12;
+  --display: "Barlow Condensed", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --body: "Barlow", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --radius: 6px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141213; --surface: #1d1a1b; --sunken: #262223; --ink: #f2eeee; --muted: #aaa0a2; --line: #342f30;
+    --maroon: #b1515e; --maroon-deep: #3f1a21; --maroon-ink: #ffffff; --maroon-soft: #34211f; --ok: #7cc495; --warn: #e0b064;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #141213; --surface: #1d1a1b; --sunken: #262223; --ink: #f2eeee; --muted: #aaa0a2; --line: #342f30;
+  --maroon: #b1515e; --maroon-deep: #3f1a21; --maroon-ink: #ffffff; --maroon-soft: #34211f; --ok: #7cc495; --warn: #e0b064;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1160px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.02; text-wrap: balance; margin: 0; text-transform: uppercase; letter-spacing: .01em; }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--maroon); outline-offset: 2px; }
+a { color: var(--maroon); }
+.label { font-family: var(--display); font-weight: 600; font-size: 14px; letter-spacing: .12em; text-transform: uppercase; }
+
+/* Header */
+.mast { background: var(--maroon-deep); color: var(--maroon-ink); }
+.mast .wrap { display: flex; align-items: center; gap: clamp(10px, 2vw, 18px); padding-block: 14px; }
+.mast .logo-box { flex: none; display: flex; }
+.mast .logo-box img { height: 54px; width: auto; display: block; }
+@media (max-width: 900px) { .mast .logo-box img { height: 60px; } }
+@media (max-width: 520px) { .mast .logo-box img { height: 52px; } }
+.mast .who { display: flex; flex-direction: column; gap: 3px; min-width: 0; flex: 1; }
+.mast .who b { font-family: var(--display); font-weight: 700; font-size: clamp(17px, 3.6vw, 28px); letter-spacing: .03em; text-transform: uppercase; line-height: 1; }
+.mast .who span { font-size: clamp(11px, 2.6vw, 14px); color: rgba(255,255,255,.78); font-weight: 500; }
+.mast .deadline { flex: none; white-space: nowrap; font-family: var(--display); font-size: clamp(12px, 2.8vw, 15px); font-weight: 600; letter-spacing: .1em; text-transform: uppercase; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.35); border-radius: 999px; padding: 6px clamp(10px, 2vw, 16px); }
+.strip { background: var(--surface); border-bottom: 1px solid var(--line); }
+.strip .wrap { display: flex; justify-content: center; gap: 8px 32px; flex-wrap: wrap; padding-block: 10px; }
+.strip span { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--muted); letter-spacing: .02em; }
+.strip svg { width: 16px; height: 16px; color: var(--maroon); flex: none; }
+
+[hidden] { display: none !important; }
+.eyebrow { color: var(--maroon); }
+.btn { display: inline-flex; align-items: center; justify-content: center; border: 0; border-radius: 4px; padding: 15px 22px; font-family: var(--display); font-weight: 700; font-size: 17px; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; background: var(--maroon); color: var(--maroon-ink); text-decoration: none; transition: filter .15s; }
+.btn:hover { filter: brightness(1.12); }
+.btn:disabled { opacity: .4; cursor: not-allowed; filter: none; }
+.btn.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.foot { background: var(--maroon-deep); color: rgba(255,255,255,.75); }
+.foot .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-block: 22px 30px; font-size: 13px; }
+.foot a { color: rgba(255,255,255,.75); font-weight: 600; }
+[hidden] { display: none !important; }
+main { padding-block: 32px 64px; display: flex; flex-direction: column; gap: 24px; }
+.top { display: flex; justify-content: space-between; align-items: end; gap: 12px; flex-wrap: wrap; }
+.top h1 { font-size: clamp(32px, 5vw, 48px); }
+.top .acts { display: flex; gap: 10px; flex-wrap: wrap; }
+.top .btn { padding: 11px 16px; font-size: 15px; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; }
+.panel h2 { font-size: 20px; letter-spacing: .08em; margin-bottom: 4px; }
+.hint { color: var(--muted); font-size: 14px; margin: 0 0 12px; }
+.tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.tile { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
+.tile .k { font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.tile .v { font-family: var(--display); font-weight: 700; font-size: 34px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.tile.hi .v { color: var(--maroon); }
+.scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 10px 10px; border-bottom: 1px solid var(--line); vertical-align: top; white-space: nowrap; }
+th { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+td.wrap-cell { white-space: normal; min-width: 180px; }
+.mono { font-family: var(--mono); }
+.paid { display: inline-flex; align-items: center; gap: 6px; border: 1.5px solid var(--line); border-radius: 999px; padding: 5px 12px; background: var(--surface); font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; color: var(--warn); }
+.paid.yes { color: var(--ok); border-color: currentColor; }
+.paid:disabled { opacity: .5; cursor: wait; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+.seg button { border: 0; background: none; padding: 6px 14px; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; color: var(--muted); }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.login { max-width: 420px; margin: 48px auto; display: flex; flex-direction: column; gap: 14px; }
+.login input { border: 1px solid var(--line); border-radius: 4px; padding: 13px 14px; font-size: 16px; background: var(--surface); color: var(--ink); }
+.err { color: var(--maroon); font-weight: 600; font-size: 14px; margin: 0; }
+@media (max-width: 760px) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.policy { max-width: 720px; padding-block: 40px 64px; display: flex; flex-direction: column; gap: 14px; }
+.policy h1 { font-size: clamp(32px, 5vw, 44px); }
+.policy h2 { font-size: 20px; letter-spacing: .06em; margin-top: 10px; }
+.policy p, .policy li { margin: 0; line-height: 1.6; }
+.policy ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+.policy a { color: var(--maroon); font-weight: 600; }
+</style>
+</head>
+<body>
+<header class="mast">
+  <div class="wrap">
+    <span class="logo-box"><img src="images/logo-black.png" alt="Radnor Baseball R logo"></span>
+    <div class="who"><b>RABA Embroidered Legends Hoodie</b><span>$38 of every hoodie goes to RABA</span></div>
+    <a class="deadline" href="./" style="color:inherit;text-decoration:none">Store</a>
+  </div>
+</header>
+<main class="wrap policy">
+  <div class="label eyebrow">RABA hoodie fundraiser</div>
+  <h1>Privacy policy</h1>
+  <p>We collect your information solely so we can contact you about order issues and delivery of your hoodies.</p>
+  <h2>What we collect</h2>
+  <ul>
+    <li>Your name, email, phone number (optional) and address</li>
+    <li>The player's name, your hoodie order and any notes you add</li>
+  </ul>
+  <h2>How it's used</h2>
+  <p>Your details go only to the fundraiser organizers, through an order confirmation email and a private order list. We don't sell or share your information, and we don't use it for marketing.</p>
+  <h2>When it's deleted</h2>
+  <p>All order information will be deleted when the fundraiser is complete.</p>
+  <h2>Questions</h2>
+  <p>Contact Paul Schuster at <a href="mailto:pschuster3@yahoo.com">pschuster3@yahoo.com</a>.</p>
+  <p><a href="./">Back to the store</a></p>
+</main>
+<footer class="foot"><div class="wrap"><span>Radnor Baseball · RABA hoodie fundraiser</span><a href="./">Back to store</a></div></footer>
+</body>
+</html>
