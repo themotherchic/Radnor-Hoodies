@@ -189,6 +189,7 @@ label.f textarea { min-height: 76px; resize: vertical; }
 .copyrow { display: flex; gap: 10px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
 .copy { border: 1px solid var(--line); background: var(--surface); border-radius: 4px; padding: 6px 12px; font-size: 13px; font-weight: 600; cursor: pointer; }
 .status-note { font-size: 14px; color: var(--muted); margin: 0; }
+.err-detail { font-size: 12px; color: var(--muted); }
 
 /* Footer */
 .foot { background: var(--maroon-deep); color: rgba(255,255,255,.75); }
@@ -587,6 +588,9 @@ async function sendConfirmation(order, note) {
     status.textContent = `A confirmation email is on its way to ${order.email}, and Paul has a copy.`;
   } catch (e) {
     status.textContent = "We couldn't send your confirmation email automatically. Please email your order to Paul instead.";
+    const why = document.createElement("span"); why.className = "err-detail";
+    why.textContent = ` (${e?.status ?? ""} ${e?.text || e?.message || "unknown error"})`.replace("( ", "(");
+    status.append(why);
     fallback.hidden = false;
   }
 }
