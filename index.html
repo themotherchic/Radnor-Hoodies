@@ -550,6 +550,17 @@ function selectFallback(btn) {
   btn.textContent = "Selected, press copy";
 }
 
+// Shared order counter (abacus.jasoncameron.dev, free, no account): each hit returns the next number.
+const COUNTER = "https://abacus.jasoncameron.dev/hit/radnor-hoodies-2026/orders";
+async function nextOrderId() {
+  try {
+    const ctl = new AbortController(); const timer = setTimeout(() => ctl.abort(), 5000);
+    const r = await fetch(COUNTER, { signal: ctl.signal }); clearTimeout(timer);
+    const n = (await r.json()).value;
+    if (r.ok && Number.isInteger(n) && n > 0) return "#" + n;
+  } catch (e) {}
+  return orderId();
+}
 function orderId() {
   const a = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; let s = "";
   for (let i = 0; i < 5; i++) s += a[Math.floor(Math.random() * a.length)];
@@ -588,7 +599,7 @@ $("contact").addEventListener("submit", async e => {
   $("placeBtn").disabled = true; $("placeBtn").textContent = "Placing order…";
   const units = state.cart.reduce((a, l) => a + l.qty, 0);
   const order = {
-    id: orderId(), name, email, phone: $("cPhone").value.trim(), player: $("cPlayer").value.trim(), notes: $("cNotes").value.trim(),
+    id: await nextOrderId(), name, email, phone: $("cPhone").value.trim(), player: $("cPlayer").value.trim(), notes: $("cNotes").value.trim(),
     items: state.cart.map(l => ({ ...l })), units, total: units * PRICE, raba: units * RABA, status: "new", createdAt: new Date().toISOString()
   };
   const note = `RABA Hoodie ${name}`;
@@ -603,7 +614,7 @@ $("contact").addEventListener("submit", async e => {
   ].filter(x => x !== null).join("\n");
   $("emailLink").href = `mailto:pschuster3@yahoo.com?cc=${encodeURIComponent(email)}&subject=${encodeURIComponent("RABA hoodie order " + order.id)}&body=${encodeURIComponent(summary)}`;
   $("venmoLink").href = `https://venmo.com/?txn=pay&audience=private&recipients=${VENMO}&amount=${order.total}&note=${encodeURIComponent(note)}`;
-  $("cfSaved").textContent = `Keep this order number: ${order.id}. Paste the payment note above into Venmo exactly so Paul can match your payment.`;
+  $("cfSaved").textContent = `Your order number is ${order.id}. Paste the payment note above into Venmo so Paul can match your payment.`;
   sendConfirmation(order, note);
   $("cfId").textContent = order.id;
   $("cfTotal").textContent = money(order.total); $("cfRaba").textContent = money(order.raba);
