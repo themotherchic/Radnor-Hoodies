@@ -540,6 +540,7 @@ async function sendConfirmation(order, note) {
       order_id: order.id, to_name: order.name, to_email: order.email, player: order.player,
       phone: order.phone || "Not given", notes: order.notes || "None",
       items: order.items.map(l => `${l.qty} x ${COLORS[l.color].name}, size ${l.size}`).join("\n"),
+      items_html: order.items.map(l => `${l.qty} &times; ${COLORS[l.color].name}, size ${l.size}`).join("<br>"),
       units: order.units, total: money(order.total), raba: money(order.raba),
       venmo: "@" + VENMO, venmo_note: note, placed: new Date(order.createdAt).toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" })
     }, { publicKey: EMAILJS.publicKey });
