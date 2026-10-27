@@ -503,7 +503,7 @@ function renderProduct() {
   const out = c.sizes.filter(s => soldOut(state.color, s));
   const when = state.stock?.checkedAt ? new Date(state.stock.checkedAt).toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" }) : "";
   $("stockNote").hidden = !state.stock;
-  $("stockNote").textContent = state.stock ? (out.length ? `${out.join(" and ")} sold out at Legends right now. ` : "All sizes in stock at Legends. ") + `Stock checked ${when}.` : "";
+  $("stockNote").textContent = state.stock?.checkedAt ? (out.length ? `${out.join(" and ")} sold out at Legends right now. ` : "All sizes in stock at Legends. ") + `Stock checked ${when}.` : "";
   $("qOut").textContent = state.qty;
   $("addBtn").disabled = !open();
   $("addHint").className = "hint";
