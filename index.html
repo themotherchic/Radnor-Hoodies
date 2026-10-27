@@ -460,6 +460,16 @@ function renderSizeGuide() {
     }).join("");
 }
 
+// Every size shows; sizes the chosen color doesn't come in, or that are sold out, grey out
+const ALL_SIZES = COLORS.black.sizes;
+function renderSizes(color) {
+  const c = color && COLORS[color];
+  $("sizes").innerHTML = ALL_SIZES.map(s => {
+    const why = !c ? "" : !c.sizes.includes(s) ? `not made in ${c.name}` : soldOut(color, s) ? "sold out at Legends" : "";
+    return why ? `<button type="button" class="size" disabled aria-label="${s}, ${why}" title="${why[0].toUpperCase() + why.slice(1)}">${s}</button>`
+      : `<button type="button" class="size" data-size="${s}" aria-pressed="${s === state.size}">${s}</button>`;
+  }).join("");
+}
 function renderChooser() {
   // Landing state: both colors side by side until the buyer picks one
   $("stageImg").src = PHOTOS.both;
@@ -472,12 +482,12 @@ function renderChooser() {
     `<button type="button" class="swatch" data-color="${k}" aria-pressed="false"><i style="background:${v.base}"></i>${v.name}</button>`).join("");
   $("thumbs").innerHTML = Object.keys(COLORS).map(k =>
     `<button type="button" data-color="${k}" aria-pressed="false" aria-label="${COLORS[k].name}"><img src="${photo(k, "front")[2]}" alt=""></button>`).join("");
-  $("sizes").innerHTML = `<p class="choose-first">Choose a color to see its sizes.</p>`;
+  renderSizes(null);
   $("stockNote").hidden = true;
   $("qOut").textContent = state.qty;
   $("addBtn").disabled = true;
   $("addHint").className = "hint";
-  $("addHint").textContent = !open() ? "Orders closed on Nov 13." : "Choose a color, then a size.";
+  $("addHint").textContent = !open() ? "Orders closed on Nov 13." : state.size ? `Size ${state.size} picked. Now choose Black or Stone.` : "Choose a color and a size.";
   renderSizeGuide();
 }
 
@@ -497,9 +507,7 @@ function renderProduct() {
   $("thumbs").innerHTML = PHOTOS[state.color].map(([v, label, src]) =>
     `<button type="button" data-view="${v}" aria-pressed="${v === state.view}" aria-label="${label}"><img src="${src}" alt=""></button>`).join("");
   if (state.size && (!c.sizes.includes(state.size) || soldOut(state.color, state.size))) state.size = null;
-  $("sizes").innerHTML = c.sizes.map(s => soldOut(state.color, s)
-    ? `<button type="button" class="size" disabled aria-label="${s}, sold out at Legends">${s}</button>`
-    : `<button type="button" class="size" data-size="${s}" aria-pressed="${s === state.size}">${s}</button>`).join("");
+  renderSizes(state.color);
   const out = c.sizes.filter(s => soldOut(state.color, s));
   const when = state.stock?.checkedAt ? new Date(state.stock.checkedAt).toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" }) : "";
   $("stockNote").hidden = !state.stock;
