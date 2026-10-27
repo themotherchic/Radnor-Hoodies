@@ -202,7 +202,7 @@ function render() {
       const items = Object.entries(SIZES).flatMap(([c, sizes]) => sizes.filter(s => Number(r[c + " " + s])).map(s => `${r[c + " " + s]} × ${c} ${s}`)).join("<br>");
       const yes = r.Paid === "Yes";
       return `<tr><td class="mono">${esc(r.Order)}</td>
-        <td class="wrap-cell"><b>${esc(r.Name)}</b><br>${esc(r.Email)}${r.Phone ? "<br>" + esc(r.Phone) : ""}${r.Notes ? "<br>Note: " + esc(r.Notes) : ""}</td>
+        <td class="wrap-cell"><b>${esc(r.Name)}</b><br>${esc(r.Email)}${r.Phone ? "<br>" + esc(r.Phone) : ""}${r.Address ? "<br>" + esc(r.Address) : ""}${r.Notes ? "<br>Note: " + esc(r.Notes) : ""}</td>
         <td>${esc(r.Player)}</td><td>${items}</td><td>${money(r.Total)}</td>
         <td>${r.Placed ? new Date(r.Placed).toLocaleDateString("en-US", { month: "short", day: "numeric" }) : ""}</td>
         <td><button class="paid${yes ? " yes" : ""}" type="button" data-id="${esc(r.Order)}" data-paid="${yes ? 0 : 1}">${yes ? "✓ Paid" : "Unpaid"}</button></td></tr>`;

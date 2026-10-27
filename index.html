@@ -353,6 +353,7 @@ select.st { border: 1px solid var(--line); border-radius: 4px; padding: 5px 8px;
             <label class="f" for="cEmail">Email<input id="cEmail" type="email" autocomplete="email" required></label>
             <label class="f" for="cPhone">Phone<input id="cPhone" type="tel" autocomplete="tel"></label>
           </div>
+          <label class="f" for="cAddress">Address<textarea id="cAddress" autocomplete="street-address" rows="2" required placeholder="Street, city, ZIP"></textarea></label>
           <label class="f" for="cPlayer">Player Name<input id="cPlayer" required></label>
           <label class="f" for="cNotes">Notes (optional)<textarea id="cNotes"></textarea></label>
           <div class="payhow">Questions? Contact Paul Schuster at <b>pschuster3@yahoo.com</b>.<br>Payment is by Venmo to <b>@Schuner31</b>. Hoodies will be delivered by December 15. After you place the order you'll get an order number and a note to paste into your Venmo payment so we can match it up.</div>
@@ -580,7 +581,7 @@ async function sendConfirmation(order, note) {
   try {
     await emailjs.send(EMAILJS.service, EMAILJS.template, {
       order_id: order.id, to_name: order.name, to_email: order.email, player: order.player,
-      phone: order.phone || "Not given", notes: order.notes || "None",
+      phone: order.phone || "Not given", address: order.address, notes: order.notes || "None",
       items: order.items.map(l => `${l.qty} x ${COLORS[l.color].name}, size ${l.size}`).join("\n"),
       items_html: order.items.map(l => `${l.qty} &times; ${COLORS[l.color].name}, size ${l.size}`).join("<br>"),
       units: order.units, total: money(order.total), raba: money(order.raba),
@@ -598,13 +599,13 @@ async function sendConfirmation(order, note) {
 $("contact").addEventListener("submit", async e => {
   e.preventDefault();
   const name = $("cName").value.trim(), email = $("cEmail").value.trim();
-  const err = !state.cart.length ? "Add at least one hoodie first." : !name ? "Enter your name." : !$("cPlayer").value.trim() ? "Enter the player's name." : !/^\S+@\S+\.\S+$/.test(email) ? "Enter a valid email so we can reach you." : !open() ? "Orders closed on Nov 13." : "";
+  const err = !state.cart.length ? "Add at least one hoodie first." : !name ? "Enter your name." : !$("cAddress").value.trim() ? "Enter your address." : !$("cPlayer").value.trim() ? "Enter the player's name." : !/^\S+@\S+\.\S+$/.test(email) ? "Enter a valid email so we can reach you." : !open() ? "Orders closed on Nov 13." : "";
   $("formErr").hidden = !err; $("formErr").textContent = err;
   if (err) return;
   $("placeBtn").disabled = true; $("placeBtn").textContent = "Placing order…";
   const units = state.cart.reduce((a, l) => a + l.qty, 0);
   const order = {
-    id: await nextOrderId(), name, email, phone: $("cPhone").value.trim(), player: $("cPlayer").value.trim(), notes: $("cNotes").value.trim(),
+    id: await nextOrderId(), name, email, phone: $("cPhone").value.trim(), address: $("cAddress").value.trim().replace(/\s*\n\s*/g, ", "), player: $("cPlayer").value.trim(), notes: $("cNotes").value.trim(),
     items: state.cart.map(l => ({ ...l })), units, total: units * PRICE, raba: units * RABA, status: "new", createdAt: new Date().toISOString()
   };
   const note = `RABA Hoodie ${name}`;
@@ -612,7 +613,7 @@ $("contact").addEventListener("submit", async e => {
   $("cfNote").textContent = note;
   $("copyNote").onclick = ev => copyText(note, ev.currentTarget);
   const summary = [
-    `Order ${order.id}`, `Name: ${name}`, `Player: ${order.player}`, `Email: ${email}`, order.phone ? `Phone: ${order.phone}` : null,
+    `Order ${order.id}`, `Name: ${name}`, `Player: ${order.player}`, `Email: ${email}`, order.phone ? `Phone: ${order.phone}` : null, `Address: ${order.address}`,
     ...order.items.map(l => `${l.qty} x ${COLORS[l.color].name}, size ${l.size}`),
     `Total: ${money(order.total)} ($${order.raba} to RABA), paid by Venmo to @${VENMO}`, "Delivery by December 15.",
     "", "Contact Paul Schuster at pschuster3@yahoo.com with any questions about your order."
