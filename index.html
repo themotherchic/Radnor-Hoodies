@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Radnor Baseball Hoodies</title>
+<meta name="description" content="RABA embroidered Legends Hawthorne Tech Hoodie. $38 of every hoodie goes to Radnor baseball.">
+<link rel="icon" href="images/logo-black.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: athletic team-store. Maroon header, gallery beside a buy box with accordions, then a two-column bag and checkout. */
+:root {
+  --bg: #f4f3f2;
+  --surface: #ffffff;
+  --sunken: #ecebe9;
+  --ink: #141213;
+  --muted: #6b6466;
+  --line: #e1dedc;
+  --maroon: #5b2730;
+  --maroon-deep: #3f1a21;
+  --maroon-ink: #ffffff;
+  --maroon-soft: #f3e7e9;
+  --ok: #2f6b45;
+  --warn: #8a5a12;
+  --display: "Barlow Condensed", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --body: "Barlow", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --radius: 6px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141213; --surface: #1d1a1b; --sunken: #262223; --ink: #f2eeee; --muted: #aaa0a2; --line: #342f30;
+    --maroon: #b1515e; --maroon-deep: #3f1a21; --maroon-ink: #ffffff; --maroon-soft: #34211f; --ok: #7cc495; --warn: #e0b064;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #141213; --surface: #1d1a1b; --sunken: #262223; --ink: #f2eeee; --muted: #aaa0a2; --line: #342f30;
+  --maroon: #b1515e; --maroon-deep: #3f1a21; --maroon-ink: #ffffff; --maroon-soft: #34211f; --ok: #7cc495; --warn: #e0b064;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1160px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.02; text-wrap: balance; margin: 0; text-transform: uppercase; letter-spacing: .01em; }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--maroon); outline-offset: 2px; }
+a { color: var(--maroon); }
+.label { font-family: var(--display); font-weight: 600; font-size: 14px; letter-spacing: .12em; text-transform: uppercase; }
+
+/* Header */
+.mast { background: var(--maroon-deep); color: var(--maroon-ink); }
+.mast .wrap { display: flex; align-items: center; gap: clamp(10px, 2vw, 18px); padding-block: 14px; }
+.mast .logo-box { flex: none; display: flex; }
+.mast .logo-box img { height: 54px; width: auto; display: block; }
+@media (max-width: 900px) { .mast .logo-box img { height: 60px; } }
+@media (max-width: 520px) { .mast .logo-box img { height: 52px; } }
+.mast .who { display: flex; flex-direction: column; gap: 3px; min-width: 0; flex: 1; }
+.mast .who b { font-family: var(--display); font-weight: 700; font-size: clamp(17px, 3.6vw, 28px); letter-spacing: .03em; text-transform: uppercase; line-height: 1; }
+.mast .who span { font-size: clamp(11px, 2.6vw, 14px); color: rgba(255,255,255,.78); font-weight: 500; }
+.mast .deadline { flex: none; white-space: nowrap; font-family: var(--display); font-size: clamp(12px, 2.8vw, 15px); font-weight: 600; letter-spacing: .1em; text-transform: uppercase; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.35); border-radius: 999px; padding: 6px clamp(10px, 2vw, 16px); }
+.strip { background: var(--surface); border-bottom: 1px solid var(--line); }
+.strip .wrap { display: flex; justify-content: center; gap: 8px 32px; flex-wrap: wrap; padding-block: 10px; }
+.strip span { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--muted); letter-spacing: .02em; }
+.strip svg { width: 16px; height: 16px; color: var(--maroon); flex: none; }
+
+/* Product */
+.sheet { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: clamp(28px, 4vw, 64px); padding-block: 36px 56px; align-items: start; }
+.gallery { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 16px); }
+.stage { background: #f1f1f1; border-radius: var(--radius); overflow: hidden; position: relative; aspect-ratio: 4 / 5; max-width: 100%; }
+.stage img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.stage .tag { position: absolute; top: 14px; left: 14px; font-family: var(--display); font-size: 13px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #141213; background: rgba(255,255,255,.9); padding: 4px 10px; border-radius: 3px; }
+.pick { position: absolute; inset: auto 0 18px 0; display: grid; grid-template-columns: 1fr 1fr; }
+.pick button { justify-self: center; border: 0; border-radius: 3px; padding: 10px 18px; font-family: var(--display); font-weight: 600; font-size: 15px; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; background: #fff; color: #141213; box-shadow: 0 6px 20px rgba(0,0,0,.18); transition: transform .15s; }
+.pick button:hover { transform: translateY(-1px); }
+.thumbs { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin-top: 8px; }
+.thumbs button { background: #f1f1f1; border: 0; outline: 2px solid transparent; outline-offset: -2px; border-radius: 4px; padding: 0; cursor: pointer; overflow: hidden; aspect-ratio: 4 / 5; opacity: .75; transition: opacity .15s; }
+.thumbs button:hover { opacity: 1; }
+.thumbs button[aria-pressed="true"] { outline-color: var(--ink); opacity: 1; }
+.thumbs img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.buy { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+.eyebrow { color: var(--maroon); }
+.buy h1 { font-size: clamp(34px, 4.6vw, 52px); margin-top: 6px; }
+.price { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.price b { font-family: var(--display); font-weight: 600; font-size: 34px; line-height: 1; }
+.give { display: inline-flex; align-items: center; gap: 10px; background: var(--maroon); color: var(--maroon-ink); border-radius: 999px; padding: 6px 16px 6px 6px; }
+.give strong { font-family: var(--display); font-weight: 700; font-size: 20px; line-height: 1; background: rgba(255,255,255,.16); border-radius: 999px; padding: 6px 10px; }
+.give span { font-size: 14px; line-height: 1.25; font-weight: 600; }
+.give br { display: none; }
+.blurb { font-size: 17px; margin: 0; max-width: 58ch; color: var(--ink); }
+.facts { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.facts > div { padding: 12px 16px; display: flex; gap: 12px; align-items: center; min-width: 0; }
+.facts > div + div { border-left: 1px solid var(--line); }
+.facts svg { width: 22px; height: 22px; color: var(--maroon); flex: none; }
+.facts .k { font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.facts .v { font-family: var(--display); font-weight: 700; font-size: 22px; line-height: 1.1; text-transform: uppercase; }
+
+.field-label { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 10px; }
+.field-label em { font-style: normal; font-weight: 500; font-size: 14px; color: var(--muted); text-transform: none; letter-spacing: 0; font-family: var(--body); }
+.swatches, .sizes { display: flex; gap: 8px; flex-wrap: wrap; }
+.swatch { display: flex; align-items: center; gap: 10px; padding: 7px 16px 7px 7px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); cursor: pointer; font-weight: 600; font-size: 15px; transition: border-color .15s; }
+.swatch:hover { border-color: var(--muted); }
+.swatch i { width: 28px; height: 28px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(0,0,0,.15); }
+.swatch[aria-pressed="true"] { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.size { min-width: 58px; height: 48px; padding: 0 12px; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); cursor: pointer; font-family: var(--display); font-weight: 600; font-size: 17px; letter-spacing: .04em; font-variant-numeric: tabular-nums; transition: border-color .15s; }
+.size:hover { border-color: var(--ink); }
+.size[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.size:disabled { cursor: not-allowed; color: var(--muted); background: var(--sunken); text-decoration: line-through; border-color: var(--sunken); }
+.stock-note { font-size: 13px; color: var(--muted); margin: 10px 0 0; }
+.choose-first { font-size: 15px; color: var(--muted); margin: 0; padding: 12px 0; }
+.addrow { display: flex; gap: 10px; align-items: stretch; }
+.qty { display: flex; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); flex: none; }
+.qty button { width: 44px; border: 0; background: none; cursor: pointer; font-size: 20px; }
+.qty output { min-width: 28px; display: grid; place-items: center; font-weight: 700; font-variant-numeric: tabular-nums; }
+.btn { display: inline-flex; align-items: center; justify-content: center; border: 0; border-radius: 4px; padding: 15px 22px; font-family: var(--display); font-weight: 700; font-size: 17px; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; background: var(--maroon); color: var(--maroon-ink); text-decoration: none; transition: filter .15s; }
+.btn:hover { filter: brightness(1.12); }
+.btn:disabled { opacity: .4; cursor: not-allowed; filter: none; }
+.btn.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.addrow .btn { flex: 1; }
+.hint { font-size: 14px; color: var(--muted); margin: 0; }
+.hint.err { color: var(--maroon); font-weight: 600; }
+
+.acc { border-top: 1px solid var(--line); }
+.acc details { border-bottom: 1px solid var(--line); }
+.acc summary { list-style: none; cursor: pointer; padding: 16px 2px; display: flex; justify-content: space-between; align-items: center; font-family: var(--display); font-weight: 600; font-size: 17px; letter-spacing: .1em; text-transform: uppercase; }
+.acc summary::-webkit-details-marker { display: none; }
+.acc summary::after { content: "+"; font-family: var(--body); font-weight: 400; font-size: 22px; line-height: 1; color: var(--muted); }
+.acc details[open] summary::after { content: "−"; }
+.acc .inner { padding: 0 2px 18px; font-size: 15px; }
+.acc .inner p { margin: 0 0 8px; }
+.acc ul { margin: 0; padding-left: 18px; display: grid; gap: 2px; }
+.acc dl { display: grid; grid-template-columns: max-content 1fr; gap: 6px 18px; margin: 0; }
+.acc dt { font-weight: 600; }
+.acc dd { margin: 0; color: var(--ink); }
+.sizeguide table { font-size: 14px; }
+.sizeguide th, .sizeguide td { padding: 8px 6px; }
+.sizeguide tr.on td { background: var(--maroon-soft); font-weight: 700; }
+.sizeguide tr.na td { color: var(--muted); }
+.sizeguide .hint { margin-top: 10px; }
+
+/* Bag and checkout */
+.order-band { background: var(--surface); border-top: 1px solid var(--line); }
+.order-head { padding-block: 40px 8px; display: flex; justify-content: space-between; align-items: end; gap: 16px; flex-wrap: wrap; }
+.order-head h2 { font-size: clamp(30px, 4vw, 40px); }
+.slip { padding-block: 16px 56px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(24px, 4vw, 56px); align-items: start; }
+.slip h3 { font-size: 20px; letter-spacing: .08em; margin-bottom: 12px; }
+.bag { background: var(--bg); border-radius: var(--radius); padding: 22px; }
+.lines { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.lines li { display: grid; grid-template-columns: 52px minmax(0, 1fr) auto; grid-template-rows: auto auto; column-gap: 14px; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.lines li img { width: 52px; height: 64px; object-fit: cover; border-radius: 3px; grid-row: span 2; }
+.lines .what b { display: block; font-weight: 600; }
+.lines .what span { font-size: 14px; color: var(--muted); }
+.lines .amt { font-variant-numeric: tabular-nums; font-weight: 700; text-align: right; }
+.lines .rm { grid-column: 3; justify-self: end; border: 0; background: none; color: var(--muted); cursor: pointer; font-size: 13px; text-decoration: underline; padding: 0; }
+.lines .warn { color: var(--maroon); font-weight: 600; }
+.totals { display: flex; flex-direction: column; gap: 6px; padding-top: 16px; font-variant-numeric: tabular-nums; }
+.totals div { display: flex; justify-content: space-between; }
+.totals .grand { font-family: var(--display); font-weight: 700; font-size: 26px; text-transform: uppercase; letter-spacing: .02em; }
+.totals .raba { color: var(--maroon); font-weight: 700; font-size: 16px; }
+.empty { color: var(--muted); padding: 18px 0; border-bottom: 1px solid var(--line); margin: 0; }
+form.contact { display: flex; flex-direction: column; gap: 16px; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+label.f { display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); min-width: 0; }
+label.f input, label.f textarea { border: 1px solid var(--line); border-radius: 4px; padding: 13px 14px; background: var(--surface); font-weight: 400; font-size: 16px; text-transform: none; letter-spacing: 0; color: var(--ink); width: 100%; transition: border-color .15s; }
+label.f input:focus, label.f textarea:focus { border-color: var(--ink); outline: none; }
+label.f textarea { min-height: 76px; resize: vertical; }
+.payhow { border-left: 3px solid var(--maroon); background: var(--maroon-soft); padding: 14px 16px; font-size: 14px; border-radius: 0 4px 4px 0; }
+.payhow b { font-family: var(--mono); font-weight: 500; }
+
+.confirm { display: flex; flex-direction: column; gap: 16px; }
+.confirm h3 { font-size: 30px; }
+.ticket { border: 1px solid var(--line); background: var(--surface); border-radius: var(--radius); padding: 18px; display: flex; flex-direction: column; gap: 12px; }
+.ticket .k { font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.ticket .v { font-family: var(--mono); font-size: 17px; overflow-wrap: anywhere; }
+.copyrow { display: flex; gap: 10px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+.copy { border: 1px solid var(--line); background: var(--surface); border-radius: 4px; padding: 6px 12px; font-size: 13px; font-weight: 600; cursor: pointer; }
+.status-note { font-size: 14px; color: var(--muted); margin: 0; }
+
+/* Footer */
+.foot { background: var(--maroon-deep); color: rgba(255,255,255,.75); }
+.foot .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-block: 22px 30px; font-size: 13px; }
+.foot a { color: rgba(255,255,255,.75); font-weight: 600; }
+
+/* Organizer view */
+.owner { padding-block: 32px 56px; display: flex; flex-direction: column; gap: 22px; }
+.owner-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; flex-wrap: wrap; }
+.tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.tile { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.tile .k { font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.tile .v { font-family: var(--display); font-weight: 700; font-size: 32px; font-variant-numeric: tabular-nums; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; }
+.panel h2 { font-size: 22px; margin-bottom: 12px; }
+.scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; white-space: nowrap; }
+th { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+td.wrap-cell { white-space: normal; min-width: 180px; }
+.pill { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; border: 1.5px solid currentColor; }
+.pill.new { color: var(--warn); }
+.pill.paid { color: var(--ok); }
+.pill.done { color: var(--muted); }
+select.st { border: 1px solid var(--line); border-radius: 4px; padding: 5px 8px; background: var(--bg); }
+.mono { font-family: var(--mono); }
+
+@media (max-width: 860px) {
+  .sheet, .slip { grid-template-columns: minmax(0, 1fr); }
+  .gallery { position: static; }
+  .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 480px) {
+  .row2 { grid-template-columns: minmax(0, 1fr); }
+  .facts { grid-template-columns: minmax(0, 1fr); }
+  .facts > div + div { border-left: 0; border-top: 1px solid var(--line); }
+  .bag { padding: 16px; }
+  .strip .wrap { justify-content: flex-start; gap: 6px 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="wrap">
+    <span class="logo-box"><img id="mastLogo" alt="Radnor Baseball R logo"></span>
+    <div class="who"><b>RABA Embroidered Legends Hoodie</b><span>$38 of every hoodie goes to RABA</span></div>
+    <div class="deadline" id="deadline">Orders close Nov 13</div>
+  </div>
+</header>
+<div class="strip" aria-label="Highlights">
+  <div class="wrap">
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"/></svg>Embroidered left chest logo</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg>$38 per hoodie supports RABA</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Delivered by December 15</span>
+  </div>
+</div>
+
+<main id="shopView">
+  <section class="wrap sheet" aria-label="Product">
+    <div class="gallery">
+      <div class="stage">
+        <span class="tag" id="stageTag">Front</span>
+        <img id="stageImg" alt="">
+        <div class="pick" id="pick"><button type="button" data-color="black">Black Heather</button><button type="button" data-color="stone">Stone Heather</button></div>
+      </div>
+      <div class="thumbs" id="thumbs" role="group" aria-label="Photos"></div>
+    </div>
+
+    <div class="buy">
+      <div>
+        <div class="label eyebrow">Radnor Baseball Team Store</div>
+        <h1>Embroidered RABA Legends Tech Hoodie</h1>
+      </div>
+      <div class="price"><b>$95</b><div class="give"><strong>$38</strong><span>of every hoodie goes<br> straight to RABA</span></div></div>
+      <p class="blurb">Legends' top-selling performance fleece with the Radnor Baseball logo embroidered on the left chest. Antimicrobial, moisture-wicking and stretchy enough to throw in, so it works for cold practices and the stands alike.</p>
+      <div class="facts" aria-label="Key dates">
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><div><div class="k">Order by</div><div class="v">Nov 13</div></div></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg><div><div class="k">Delivered by</div><div class="v">Dec 15</div></div></div>
+      </div>
+
+      <div>
+        <div class="field-label"><span class="label">Color</span> <em id="colorName"></em></div>
+        <div class="swatches" id="swatches"></div>
+      </div>
+
+      <div>
+        <div class="field-label"><span class="label">Size</span> <em id="fitNote"></em></div>
+        <div class="sizes" id="sizes" role="group" aria-label="Size"></div>
+        <p class="stock-note" id="stockNote" hidden></p>
+      </div>
+
+      <div class="addrow">
+        <div class="qty" aria-label="Quantity">
+          <button type="button" id="qMinus" aria-label="One fewer">−</button>
+          <output id="qOut">1</output>
+          <button type="button" id="qPlus" aria-label="One more">+</button>
+        </div>
+        <button class="btn" type="button" id="addBtn">Add to order</button>
+      </div>
+      <p class="hint" id="addHint">Pick a size to add this hoodie to your order.</p>
+
+      <div class="acc">
+        <details class="sizeguide" id="sizeGuide">
+          <summary>Size guide</summary>
+          <div class="inner">
+            <div class="scroll"><table id="sizeTableGuide"></table></div>
+            <p class="hint">Body measurements in inches, from Legends' men's size chart. Measure around the fullest part of the chest. The Hawthorne has an athletic fit, so size up if you're between sizes or like a looser hoodie.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Details</summary>
+          <div class="inner">
+            <dl>
+              <dt>Fabric</dt><dd>70% polyester, 25% rayon, 5% spandex performance fleece</dd>
+              <dt>Fit</dt><dd>Athletic. Runs true to size on the trim side.</dd>
+              <dt>Logo</dt><dd>Embroidered on the left chest.</dd>
+            </dl>
+          </div>
+        </details>
+        <details>
+          <summary>Features</summary>
+          <div class="inner"><ul><li>Antimicrobial, resists odor</li><li>Moisture wicking</li><li>4-way stretch</li><li>Scuba hood with drawcords</li><li>Kangaroo pocket</li></ul></div>
+        </details>
+        <details>
+          <summary>Care</summary>
+          <div class="inner"><ul><li>Machine wash cold</li><li>Wash with like colors</li><li>Tumble dry low</li></ul></div>
+        </details>
+        <details>
+          <summary>Pricing</summary>
+          <div class="inner"><p>Same $95 that <a href="https://www.legends.com/collections/hawthorne-tech-hoodie" target="_blank" rel="noopener">legends.com</a> charges for the plain hoodie, with the embroidery included and $38 going to RABA. Photos from Legends.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="order-band" aria-label="Your order">
+    <div class="wrap order-head">
+      <h2>Your order</h2>
+      <span class="hint">Pay by Venmo · Questions: Paul Schuster, pschuster3@yahoo.com</span>
+    </div>
+    <div class="wrap slip" id="slip">
+      <div class="bag">
+        <h3>Bag</h3>
+        <ul class="lines" id="lines"></ul>
+        <p class="empty" id="emptyCart">No hoodies yet. Choose a color and size above, then add it here.</p>
+        <div class="totals" id="totals" hidden>
+          <div class="grand"><span>Total</span><span id="grand">$0</span></div>
+          <div class="raba"><span>Your gift to RABA</span><span id="raba">$0</span></div>
+        </div>
+      </div>
+
+      <div id="checkout">
+        <h3>Checkout</h3>
+        <form class="contact" id="contact" novalidate>
+          <label class="f" for="cName">Your name<input id="cName" autocomplete="name" required></label>
+          <div class="row2">
+            <label class="f" for="cEmail">Email<input id="cEmail" type="email" autocomplete="email" required></label>
+            <label class="f" for="cPhone">Phone<input id="cPhone" type="tel" autocomplete="tel"></label>
+          </div>
+          <label class="f" for="cPlayer">Player Name<input id="cPlayer" required></label>
+          <label class="f" for="cNotes">Notes (optional)<textarea id="cNotes"></textarea></label>
+          <div class="payhow">Questions? Contact Paul Schuster at <b>pschuster3@yahoo.com</b>.<br>Payment is by Venmo to <b>@Schuner31</b>. Hoodies will be delivered by December 15. After you place the order you'll get an order number and a note to paste into your Venmo payment so we can match it up.</div>
+          <p class="hint err" id="formErr" hidden></p>
+          <button class="btn" type="submit" id="placeBtn">Place order</button>
+        </form>
+      </div>
+
+      <div class="confirm" id="confirm" hidden>
+        <h3>Order placed</h3>
+        <p style="margin:0">Your order is reserved. Send payment on Venmo to finish it: we order from Legends after <b id="cfDeadline">Nov 13</b>, and only paid orders are included. Hoodies will be delivered by <b>December 15</b>.</p>
+        <div class="ticket">
+          <div class="copyrow"><div><div class="k">Pay</div><div class="v" id="cfAmount"></div></div></div>
+          <div class="copyrow"><div><div class="k">Venmo</div><div class="v">@Schuner31</div></div><button class="copy" type="button" data-copy="@Schuner31">Copy</button></div>
+          <div class="copyrow"><div style="min-width:0"><div class="k">Payment note</div><div class="v" id="cfNote"></div></div><button class="copy" type="button" id="copyNote">Copy</button></div>
+        </div>
+        <a class="btn" id="venmoLink" target="_blank" rel="noopener">Open Venmo</a>
+        <p class="status-note" id="cfSaved"></p>
+        <div class="ticket">
+          <div class="copyrow"><div style="min-width:0"><div class="k">Questions about your order?</div><div>Contact Paul Schuster at <span class="v" style="font-size:15px">pschuster3@yahoo.com</span></div></div><button class="copy" type="button" data-copy="pschuster3@yahoo.com">Copy</button></div>
+          <p class="status-note" id="emailStatus">Sending your confirmation email…</p>
+          <div id="emailFallback" hidden>
+            <a class="btn ghost" id="emailLink">Email my order details to Paul</a>
+            <p class="status-note">This opens your email app with your order filled in and sends you a copy too. If it doesn't open, copy the address above and email Paul your order number.</p>
+          </div>
+        </div>
+        <button class="btn ghost" type="button" id="newOrder">Start another order</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+<footer class="foot">
+  <div class="wrap">
+    <span>Radnor Baseball · RABA hoodie fundraiser</span>
+  </div>
+</footer>
+
+<script>
+const LOGOS = { black: "images/logo-black.png", stone: "images/logo-stone.png" };
+const PRICE = 95, RABA = 38;
+const CLOSES = new Date("2026-11-14T05:00:00Z"); // end of Nov 13, Eastern
+const VENMO = "Schuner31";
+// EmailJS (emailjs.com): one template sends the buyer's confirmation and Bcc's Paul.
+const EMAILJS = { publicKey: "YOUR_PUBLIC_KEY", service: "YOUR_SERVICE_ID", template: "YOUR_TEMPLATE_ID" };
+const emailReady = () => window.emailjs && !Object.values(EMAILJS).some(v => v.startsWith("YOUR_"));
+const COLORS = {
+  black: { name: "Black Heather", base: "#36373b", shade: "#2a2b2e", deep: "#1e1f21", sizes: ["S","M","L","XL","XXL","3X","4X"], model: "Model is 6'2\" in L" },
+  stone: { name: "Stone Heather", base: "#bdb6aa", shade: "#a69e91", deep: "#8f877b", sizes: ["S","M","L","XL","XXL"], model: "Model is 6'1\" in M" }
+};
+
+const PHOTOS = {
+  black: [["front", "Front", "images/black-front.jpg"], ["three-quarter", "Three-quarter", "images/black-three-quarter.jpg"], ["side", "Side", "images/black-side.jpg"], ["back", "Back", "images/black-back.jpg"], ["detail", "Fabric", "images/black-detail.jpg"]],
+  both: "images/both-colors.jpg",
+  stone: [["front", "Front", "images/stone-front.jpg"], ["side", "Side", "images/stone-side.jpg"], ["back", "Back", "images/stone-back.jpg"], ["pocket", "Kangaroo pocket", "images/stone-pocket.jpg"], ["detail", "Fabric", "images/stone-detail.jpg"]]
+};
+const photo = (color, view) => PHOTOS[color].find(p => p[0] === view) || PHOTOS[color][0];
+
+const state = { color: null, view: "front", size: null, qty: 1, cart: [], stock: null };
+const soldOut = (color, size) => state.stock?.[color]?.[size] === false;
+try { const saved = JSON.parse(localStorage.getItem("rbh-cart") || "null"); if (Array.isArray(saved)) state.cart = saved; } catch (e) {}
+const $ = id => document.getElementById(id);
+const money = n => "$" + n.toLocaleString("en-US");
+const open = () => Date.now() < CLOSES.getTime();
+
+function saveCart() { try { localStorage.setItem("rbh-cart", JSON.stringify(state.cart)); } catch (e) {} }
+
+// Legends men's size chart (body measurements, inches)
+const SIZE_CHART = [
+  ["S", "37–38", "30–31", "37–38"], ["M", "39–40", "32–33", "39–40"], ["L", "41–42", "34–36", "41–42"],
+  ["XL", "44–47", "37–39", "44–45"], ["XXL", "47–50", "40–42", "47–48"], ["3X", "54–56", "49–53", "53–56"], ["4X", "58–60", "54–58", "56–59"]
+];
+function renderSizeGuide() {
+  const c = state.color ? COLORS[state.color] : null;
+  $("sizeTableGuide").innerHTML = `<tr><th>Size</th><th>Chest</th><th>Waist</th><th>Hips</th></tr>` +
+    SIZE_CHART.map(([sz, chest, waist, hips]) => {
+      const na = c && !c.sizes.includes(sz);
+      const cls = na ? "na" : sz === state.size ? "on" : "";
+      return `<tr class="${cls}"><td>${sz}${na ? ` <small>Black only</small>` : ""}</td><td>${chest}</td><td>${waist}</td><td>${hips}</td></tr>`;
+    }).join("");
+}
+
+function renderChooser() {
+  // Landing state: both colors side by side until the buyer picks one
+  $("stageImg").src = PHOTOS.both;
+  $("stageImg").alt = "Black Heather and Stone Heather RABA Legends Tech Hoodies with the embroidered left chest logo";
+  $("stageTag").textContent = "Two colors · pick one to see more";
+  $("pick").hidden = false;
+  $("colorName").textContent = "Choose one";
+  $("fitNote").textContent = "";
+  $("swatches").innerHTML = Object.entries(COLORS).map(([k, v]) =>
+    `<button type="button" class="swatch" data-color="${k}" aria-pressed="false"><i style="background:${v.base}"></i>${v.name}</button>`).join("");
+  $("thumbs").innerHTML = Object.keys(COLORS).map(k =>
+    `<button type="button" data-color="${k}" aria-pressed="false" aria-label="${COLORS[k].name}"><img src="${photo(k, "front")[2]}" alt=""></button>`).join("");
+  $("sizes").innerHTML = `<p class="choose-first">Choose a color to see its sizes.</p>`;
+  $("stockNote").hidden = true;
+  $("qOut").textContent = state.qty;
+  $("addBtn").disabled = true;
+  $("addHint").className = "hint";
+  $("addHint").textContent = !open() ? "Orders closed on Nov 13." : "Choose a color, then a size.";
+  renderSizeGuide();
+}
+
+function renderProduct() {
+  if (!state.color) return renderChooser();
+  $("pick").hidden = true;
+  const c = COLORS[state.color];
+  const [view, label, src] = photo(state.color, state.view);
+  state.view = view;
+  $("stageImg").src = src;
+  $("stageImg").alt = `${c.name} RABA Legends Tech Hoodie, ${label.toLowerCase()}`;
+  $("stageTag").textContent = `${c.name} · ${label}`;
+  $("colorName").textContent = c.name;
+  $("fitNote").textContent = c.model;
+  $("swatches").innerHTML = Object.entries(COLORS).map(([k, v]) =>
+    `<button type="button" class="swatch" data-color="${k}" aria-pressed="${k === state.color}"><i style="background:${v.base}"></i>${v.name}</button>`).join("");
+  $("thumbs").innerHTML = PHOTOS[state.color].map(([v, label, src]) =>
+    `<button type="button" data-view="${v}" aria-pressed="${v === state.view}" aria-label="${label}"><img src="${src}" alt=""></button>`).join("");
+  if (state.size && (!c.sizes.includes(state.size) || soldOut(state.color, state.size))) state.size = null;
+  $("sizes").innerHTML = c.sizes.map(s => soldOut(state.color, s)
+    ? `<button type="button" class="size" disabled aria-label="${s}, sold out at Legends">${s}</button>`
+    : `<button type="button" class="size" data-size="${s}" aria-pressed="${s === state.size}">${s}</button>`).join("");
+  const out = c.sizes.filter(s => soldOut(state.color, s));
+  const when = state.stock?.checkedAt ? new Date(state.stock.checkedAt).toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" }) : "";
+  $("stockNote").hidden = !state.stock;
+  $("stockNote").textContent = state.stock ? (out.length ? `${out.join(" and ")} sold out at Legends right now. ` : "All sizes in stock at Legends. ") + `Stock checked ${when}.` : "";
+  $("qOut").textContent = state.qty;
+  $("addBtn").disabled = !open();
+  $("addHint").className = "hint";
+  renderSizeGuide();
+  $("addHint").textContent = !open() ? "Orders closed on Nov 13." : state.size ? `${c.name}, size ${state.size} × ${state.qty} · ${money(PRICE * state.qty)}` : "Pick a size to add this hoodie to your order.";
+}
+
+function renderCart() {
+  const has = state.cart.length > 0;
+  $("emptyCart").hidden = has;
+  $("totals").hidden = !has;
+  $("lines").innerHTML = state.cart.map((l, i) => `<li><img src="${photo(l.color, "front")[2]}" alt="">
+    <div class="what"><b>${COLORS[l.color].name}</b><span>Size ${l.size} · Qty ${l.qty}${soldOut(l.color, l.size) ? ` · <span class="warn">now sold out at Legends</span>` : ""}</span></div>
+    <span class="amt">${money(PRICE * l.qty)}</span>
+    <button class="rm" type="button" data-rm="${i}">Remove</button></li>`).join("");
+  const units = state.cart.reduce((a, l) => a + l.qty, 0);
+  $("grand").textContent = money(units * PRICE);
+  $("raba").textContent = money(units * RABA);
+  $("placeBtn").disabled = !has || !open();
+}
+
+document.addEventListener("click", e => {
+  const t = e.target.closest("button");
+  if (!t) return;
+  if (t.dataset.color) { state.color = t.dataset.color; state.view = "front"; renderProduct(); }
+  else if (t.dataset.view) { state.view = t.dataset.view; renderProduct(); }
+  else if (t.dataset.size) { state.size = t.dataset.size; renderProduct(); }
+  else if (t.dataset.rm) { state.cart.splice(+t.dataset.rm, 1); saveCart(); renderCart(); }
+  else if (t.dataset.copy) copyText(t.dataset.copy, t);
+});
+$("qMinus").onclick = () => { state.qty = Math.max(1, state.qty - 1); renderProduct(); };
+$("qPlus").onclick = () => { state.qty = Math.min(10, state.qty + 1); renderProduct(); };
+$("addBtn").onclick = () => {
+  if (!state.size) { $("addHint").className = "hint err"; $("addHint").textContent = "Choose a size first."; return; }
+  const same = state.cart.find(l => l.color === state.color && l.size === state.size);
+  if (same) same.qty += state.qty; else state.cart.push({ color: state.color, size: state.size, qty: state.qty });
+  saveCart(); renderCart();
+  $("addHint").textContent = `Added ${COLORS[state.color].name}, size ${state.size} × ${state.qty}.`;
+  state.qty = 1; $("qOut").textContent = 1;
+};
+
+function copyText(text, btn) {
+  const done = () => { const o = btn.textContent; btn.textContent = "Copied"; setTimeout(() => btn.textContent = o, 1400); };
+  try { navigator.clipboard.writeText(text).then(done, () => selectFallback(btn)); } catch (e) { selectFallback(btn); }
+}
+function selectFallback(btn) {
+  const v = btn.parentElement.querySelector(".v");
+  if (!v) return;
+  const r = document.createRange(); r.selectNodeContents(v);
+  const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+  btn.textContent = "Selected, press copy";
+}
+
+function orderId() {
+  const a = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; let s = "";
+  for (let i = 0; i < 5; i++) s += a[Math.floor(Math.random() * a.length)];
+  return "RB-" + s;
+}
+function itemsShort(items) {
+  const ab = { black: "Blk", stone: "Stn" };
+  return items.map(l => `${l.qty}x ${ab[l.color]} ${l.size}`).join(", ");
+}
+
+async function sendConfirmation(order, note) {
+  const status = $("emailStatus"), fallback = $("emailFallback");
+  status.textContent = "Sending your confirmation email…"; fallback.hidden = true;
+  if (!emailReady()) { status.textContent = "Email your order details to Paul so he has a record of it."; fallback.hidden = false; return; }
+  try {
+    await emailjs.send(EMAILJS.service, EMAILJS.template, {
+      order_id: order.id, to_name: order.name, to_email: order.email, player: order.player,
+      phone: order.phone || "Not given", notes: order.notes || "None",
+      items: order.items.map(l => `${l.qty} x ${COLORS[l.color].name}, size ${l.size}`).join("\n"),
+      units: order.units, total: money(order.total), raba: money(order.raba),
+      venmo: "@" + VENMO, venmo_note: note, placed: new Date(order.createdAt).toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" })
+    }, { publicKey: EMAILJS.publicKey });
+    status.textContent = `A confirmation email is on its way to ${order.email}, and Paul has a copy.`;
+  } catch (e) {
+    status.textContent = "We couldn't send your confirmation email automatically. Please email your order to Paul instead.";
+    fallback.hidden = false;
+  }
+}
+$("contact").addEventListener("submit", async e => {
+  e.preventDefault();
+  const name = $("cName").value.trim(), email = $("cEmail").value.trim();
+  const err = !state.cart.length ? "Add at least one hoodie first." : !name ? "Enter your name." : !$("cPlayer").value.trim() ? "Enter the player's name." : !/^\S+@\S+\.\S+$/.test(email) ? "Enter a valid email so we can reach you." : !open() ? "Orders closed on Nov 13." : "";
+  $("formErr").hidden = !err; $("formErr").textContent = err;
+  if (err) return;
+  $("placeBtn").disabled = true; $("placeBtn").textContent = "Placing order…";
+  const units = state.cart.reduce((a, l) => a + l.qty, 0);
+  const order = {
+    id: orderId(), name, email, phone: $("cPhone").value.trim(), player: $("cPlayer").value.trim(), notes: $("cNotes").value.trim(),
+    items: state.cart.map(l => ({ ...l })), units, total: units * PRICE, raba: units * RABA, status: "new", createdAt: new Date().toISOString()
+  };
+  const note = `RABA hoodie ${order.id} ${name}: ${itemsShort(order.items)}`;
+  $("cfAmount").textContent = money(order.total);
+  $("cfNote").textContent = note;
+  $("copyNote").onclick = ev => copyText(note, ev.currentTarget);
+  const summary = [
+    `Order ${order.id}`, `Name: ${name}`, `Player: ${order.player}`, `Email: ${email}`, order.phone ? `Phone: ${order.phone}` : null,
+    ...order.items.map(l => `${l.qty} x ${COLORS[l.color].name}, size ${l.size}`),
+    `Total: ${money(order.total)} ($${order.raba} to RABA), paid by Venmo to @${VENMO}`, "Delivery by December 15.",
+    "", "Contact Paul Schuster at pschuster3@yahoo.com with any questions about your order."
+  ].filter(x => x !== null).join("\n");
+  $("emailLink").href = `mailto:pschuster3@yahoo.com?cc=${encodeURIComponent(email)}&subject=${encodeURIComponent("RABA hoodie order " + order.id)}&body=${encodeURIComponent(summary)}`;
+  $("venmoLink").href = `https://venmo.com/?txn=pay&audience=private&recipients=${VENMO}&amount=${order.total}&note=${encodeURIComponent(note)}`;
+  $("cfSaved").textContent = `Keep this order number: ${order.id}. Paste the payment note above into Venmo exactly so Paul can match your payment.`;
+  sendConfirmation(order, note);
+  $("checkout").hidden = true; $("confirm").hidden = false;
+  state.cart = []; saveCart(); renderCart();
+  $("placeBtn").textContent = "Place order";
+  $("slip").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+});
+$("newOrder").onclick = () => { $("confirm").hidden = true; $("checkout").hidden = false; $("contact").reset(); renderCart(); };
+
+function esc(s) { return String(s ?? "").replace(/[&<>"']/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch])); }
+matchMedia("(max-width: 620px)").addEventListener("change", () => renderDeadline());
+
+function renderDeadline() {
+  const days = Math.ceil((CLOSES - Date.now()) / 86400000);
+  const narrow = matchMedia("(max-width: 620px)").matches;
+  $("deadline").textContent = !open() ? "Orders closed" : days <= 1 ? "Last day to order" : narrow ? "Closes Nov 13" : `Orders close Nov 13 · ${days} days left`;
+}
+
+$("mastLogo").src = LOGOS.black;
+renderDeadline(); renderProduct(); renderCart();
+
+fetch("stock.json", { cache: "no-store" }).then(r => r.ok ? r.json() : null).then(s => {
+  if (s) { state.stock = s; renderProduct(); renderCart(); }
+}).catch(() => {});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js"></script>
+</body>
+</html>
