@@ -407,6 +407,7 @@ select.st { border: 1px solid var(--line); border-radius: 4px; padding: 5px 8px;
 <footer class="foot">
   <div class="wrap">
     <span>Radnor Baseball · RABA hoodie fundraiser</span>
+    <a href="orders.html" rel="nofollow">Organizers</a>
   </div>
 </footer>
 
@@ -417,8 +418,6 @@ const CLOSES = new Date("2026-11-14T05:00:00Z"); // end of Nov 13, Eastern
 const VENMO = "Schuner31";
 // EmailJS (emailjs.com): one template sends the buyer's confirmation and Bcc's Paul.
 const EMAILJS = { publicKey: "qLoYODGgrQjke9FVm", service: "service_1vclibo", template: "template_3fgjahp" };
-// Google Sheet order log (Apps Script web app URL). Empty = off.
-const SHEET_URL = "";
 const emailReady = () => window.emailjs && !Object.values(EMAILJS).some(v => v.startsWith("YOUR_"));
 const COLORS = {
   black: { name: "Black Heather", base: "#36373b", shade: "#2a2b2e", deep: "#1e1f21", sizes: ["S","M","L","XL","XXL","3X","4X"], model: "Model is 6'2\" in L" },
@@ -622,7 +621,7 @@ $("contact").addEventListener("submit", async e => {
   $("venmoLink").href = `https://venmo.com/?txn=pay&audience=private&recipients=${VENMO}&amount=${order.total}&note=${encodeURIComponent(note)}`;
   $("cfSaved").textContent = `Your order number is ${order.id}. Paste the payment note above into Venmo so Paul can match your payment.`;
   sendConfirmation(order, note);
-  if (SHEET_URL) fetch(SHEET_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain" }, body: JSON.stringify({ ...order, note }) }).catch(() => {});
+  if (window.SHEET_URL) fetch(window.SHEET_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain" }, body: JSON.stringify({ ...order, note }) }).catch(() => {});
   $("cfId").textContent = order.id;
   $("cfTotal").textContent = money(order.total); $("cfRaba").textContent = money(order.raba);
   $("cfLines").innerHTML = order.items.map(l => `<li><img src="${photo(l.color, "front")[2]}" alt=""><span class="what"><b>${COLORS[l.color].name}</b><span>Size ${esc(l.size)} · Qty ${l.qty}</span></span><span class="amt">${money(l.qty * PRICE)}</span></li>`).join("");
@@ -654,6 +653,7 @@ fetch("stock.json", { cache: "no-store" }).then(r => r.ok ? r.json() : null).the
   if (s) { state.stock = s; renderProduct(); renderCart(); }
 }).catch(() => {});
 </script>
+<script src="config.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js"></script>
 </body>
 </html>

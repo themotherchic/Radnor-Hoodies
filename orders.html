@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Hoodie Orders</title>
+<link rel="icon" href="images/logo-black.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: athletic team-store. Maroon header, gallery beside a buy box with accordions, then a two-column bag and checkout. */
+:root {
+  --bg: #f4f3f2;
+  --surface: #ffffff;
+  --sunken: #ecebe9;
+  --ink: #141213;
+  --muted: #6b6466;
+  --line: #e1dedc;
+  --maroon: #5b2730;
+  --maroon-deep: #3f1a21;
+  --maroon-ink: #ffffff;
+  --maroon-soft: #f3e7e9;
+  --ok: #2f6b45;
+  --warn: #8a5a12;
+  --display: "Barlow Condensed", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --body: "Barlow", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --radius: 6px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141213; --surface: #1d1a1b; --sunken: #262223; --ink: #f2eeee; --muted: #aaa0a2; --line: #342f30;
+    --maroon: #b1515e; --maroon-deep: #3f1a21; --maroon-ink: #ffffff; --maroon-soft: #34211f; --ok: #7cc495; --warn: #e0b064;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #141213; --surface: #1d1a1b; --sunken: #262223; --ink: #f2eeee; --muted: #aaa0a2; --line: #342f30;
+  --maroon: #b1515e; --maroon-deep: #3f1a21; --maroon-ink: #ffffff; --maroon-soft: #34211f; --ok: #7cc495; --warn: #e0b064;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1160px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.02; text-wrap: balance; margin: 0; text-transform: uppercase; letter-spacing: .01em; }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--maroon); outline-offset: 2px; }
+a { color: var(--maroon); }
+.label { font-family: var(--display); font-weight: 600; font-size: 14px; letter-spacing: .12em; text-transform: uppercase; }
+
+/* Header */
+.mast { background: var(--maroon-deep); color: var(--maroon-ink); }
+.mast .wrap { display: flex; align-items: center; gap: clamp(10px, 2vw, 18px); padding-block: 14px; }
+.mast .logo-box { flex: none; display: flex; }
+.mast .logo-box img { height: 54px; width: auto; display: block; }
+@media (max-width: 900px) { .mast .logo-box img { height: 60px; } }
+@media (max-width: 520px) { .mast .logo-box img { height: 52px; } }
+.mast .who { display: flex; flex-direction: column; gap: 3px; min-width: 0; flex: 1; }
+.mast .who b { font-family: var(--display); font-weight: 700; font-size: clamp(17px, 3.6vw, 28px); letter-spacing: .03em; text-transform: uppercase; line-height: 1; }
+.mast .who span { font-size: clamp(11px, 2.6vw, 14px); color: rgba(255,255,255,.78); font-weight: 500; }
+.mast .deadline { flex: none; white-space: nowrap; font-family: var(--display); font-size: clamp(12px, 2.8vw, 15px); font-weight: 600; letter-spacing: .1em; text-transform: uppercase; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.35); border-radius: 999px; padding: 6px clamp(10px, 2vw, 16px); }
+.strip { background: var(--surface); border-bottom: 1px solid var(--line); }
+.strip .wrap { display: flex; justify-content: center; gap: 8px 32px; flex-wrap: wrap; padding-block: 10px; }
+.strip span { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--muted); letter-spacing: .02em; }
+.strip svg { width: 16px; height: 16px; color: var(--maroon); flex: none; }
+
+[hidden] { display: none !important; }
+.eyebrow { color: var(--maroon); }
+.btn { display: inline-flex; align-items: center; justify-content: center; border: 0; border-radius: 4px; padding: 15px 22px; font-family: var(--display); font-weight: 700; font-size: 17px; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; background: var(--maroon); color: var(--maroon-ink); text-decoration: none; transition: filter .15s; }
+.btn:hover { filter: brightness(1.12); }
+.btn:disabled { opacity: .4; cursor: not-allowed; filter: none; }
+.btn.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.foot { background: var(--maroon-deep); color: rgba(255,255,255,.75); }
+.foot .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-block: 22px 30px; font-size: 13px; }
+.foot a { color: rgba(255,255,255,.75); font-weight: 600; }
+[hidden] { display: none !important; }
+main { padding-block: 32px 64px; display: flex; flex-direction: column; gap: 24px; }
+.top { display: flex; justify-content: space-between; align-items: end; gap: 12px; flex-wrap: wrap; }
+.top h1 { font-size: clamp(32px, 5vw, 48px); }
+.top .acts { display: flex; gap: 10px; flex-wrap: wrap; }
+.top .btn { padding: 11px 16px; font-size: 15px; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; }
+.panel h2 { font-size: 20px; letter-spacing: .08em; margin-bottom: 4px; }
+.hint { color: var(--muted); font-size: 14px; margin: 0 0 12px; }
+.tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.tile { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
+.tile .k { font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.tile .v { font-family: var(--display); font-weight: 700; font-size: 34px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.tile.hi .v { color: var(--maroon); }
+.scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 10px 10px; border-bottom: 1px solid var(--line); vertical-align: top; white-space: nowrap; }
+th { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+td.wrap-cell { white-space: normal; min-width: 180px; }
+.mono { font-family: var(--mono); }
+.paid { display: inline-flex; align-items: center; gap: 6px; border: 1.5px solid var(--line); border-radius: 999px; padding: 5px 12px; background: var(--surface); font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; color: var(--warn); }
+.paid.yes { color: var(--ok); border-color: currentColor; }
+.paid:disabled { opacity: .5; cursor: wait; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+.seg button { border: 0; background: none; padding: 6px 14px; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; color: var(--muted); }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.login { max-width: 420px; margin: 48px auto; display: flex; flex-direction: column; gap: 14px; }
+.login input { border: 1px solid var(--line); border-radius: 4px; padding: 13px 14px; font-size: 16px; background: var(--surface); color: var(--ink); }
+.err { color: var(--maroon); font-weight: 600; font-size: 14px; margin: 0; }
+@media (max-width: 760px) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+</style>
+</head>
+<body>
+<header class="mast">
+  <div class="wrap">
+    <span class="logo-box"><img src="images/logo-black.png" alt="Radnor Baseball R logo"></span>
+    <div class="who"><b>Organizer · Hoodie orders</b><span>RABA Embroidered Legends Hoodie</span></div>
+    <a class="deadline" href="./" style="color:inherit;text-decoration:none">Store</a>
+  </div>
+</header>
+
+<form class="wrap login" id="login">
+  <h1 style="font-size:36px">Organizer sign-in</h1>
+  <p class="hint" style="margin:0">Enter the organizer password to see orders.</p>
+  <input type="password" id="pw" autocomplete="current-password" placeholder="Password" required>
+  <p class="err" id="loginErr" hidden></p>
+  <button class="btn" type="submit" id="loginBtn">Show orders</button>
+</form>
+
+<main class="wrap" id="board" hidden>
+  <div class="top">
+    <div><div class="label eyebrow">Orders close Nov 13 · delivery by Dec 15</div><h1>Hoodie orders</h1></div>
+    <div class="acts">
+      <button class="btn ghost" type="button" id="refresh">Refresh</button>
+      <a class="btn ghost" id="sheetLink" target="_blank" rel="noopener" hidden>Open Google Sheet</a>
+      <button class="btn ghost" type="button" id="signout">Sign out</button>
+    </div>
+  </div>
+  <p class="err" id="boardErr" hidden></p>
+  <div class="tiles">
+    <div class="tile"><div class="k">Orders</div><div class="v" id="tOrders">0</div></div>
+    <div class="tile"><div class="k">Hoodies</div><div class="v" id="tUnits">0</div></div>
+    <div class="tile"><div class="k">Paid</div><div class="v" id="tPaid">$0</div></div>
+    <div class="tile hi"><div class="k">To RABA (paid)</div><div class="v" id="tRaba">$0</div></div>
+  </div>
+  <section class="panel">
+    <div class="top" style="align-items:center"><h2>Legends order sheet</h2>
+      <div class="seg" role="group" aria-label="Which orders to count"><button type="button" data-f="paid" aria-pressed="true">Paid only</button><button type="button" data-f="all" aria-pressed="false">All orders</button></div></div>
+    <p class="hint">Hoodie counts by color and size, ready to order from Legends.</p>
+    <div class="scroll"><table id="sizeTable"></table></div>
+  </section>
+  <section class="panel">
+    <h2>All orders</h2>
+    <p class="hint">Click Unpaid once the Venmo arrives. Newest first.</p>
+    <div class="scroll"><table id="orderTable"></table></div>
+  </section>
+</main>
+
+<footer class="foot"><div class="wrap"><span>Radnor Baseball · RABA hoodie fundraiser</span><a href="./">Back to store</a></div></footer>
+
+<script src="config.js"></script>
+<script>
+const SIZES = { Black: ["S","M","L","XL","XXL","3X","4X"], Stone: ["S","M","L","XL","XXL"] };
+const ALL = SIZES.Black;
+const $ = id => document.getElementById(id);
+const money = n => "$" + Number(n || 0).toLocaleString("en-US");
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+let key = "", rows = [], filter = "paid";
+try { key = sessionStorage.getItem("raba-org") || ""; } catch (e) {}
+
+async function call(params) {
+  const u = new URL(window.SHEET_URL);
+  Object.entries({ key, ...params }).forEach(([k, v]) => u.searchParams.set(k, v));
+  const r = await fetch(u); return r.json();
+}
+async function load(params = {}) {
+  if (!window.SHEET_URL) { showLogin("The order sheet isn't connected yet."); return; }
+  $("boardErr").hidden = true;
+  try {
+    const res = await call(params);
+    if (!res.ok) { if (res.error === "bad_password") { forget(); showLogin("That password didn't work."); } else { $("boardErr").textContent = "Couldn't update: " + res.error; $("boardErr").hidden = false; } return; }
+    rows = res.rows.filter(r => r.Order).sort((a, b) => String(b.Placed).localeCompare(String(a.Placed)));
+    if (res.sheetUrl) { $("sheetLink").href = res.sheetUrl; $("sheetLink").hidden = false; }
+    $("login").hidden = true; $("board").hidden = false; render();
+  } catch (e) { if ($("board").hidden) showLogin("Couldn't reach the order sheet. Check your connection and try again."); else { $("boardErr").textContent = "Couldn't reach the order sheet. Try Refresh."; $("boardErr").hidden = false; } }
+}
+function showLogin(msg) { $("board").hidden = true; $("login").hidden = false; $("loginErr").textContent = msg || ""; $("loginErr").hidden = !msg; $("loginBtn").disabled = false; $("loginBtn").textContent = "Show orders"; }
+function forget() { key = ""; try { sessionStorage.removeItem("raba-org"); } catch (e) {} }
+
+function render() {
+  const paid = rows.filter(r => r.Paid === "Yes");
+  $("tOrders").textContent = rows.length;
+  $("tUnits").textContent = rows.reduce((a, r) => a + Number(r.Hoodies || 0), 0);
+  $("tPaid").textContent = money(paid.reduce((a, r) => a + Number(r.Total || 0), 0));
+  $("tRaba").textContent = money(paid.reduce((a, r) => a + Number(r["To RABA"] || 0), 0));
+  const src = filter === "paid" ? paid : rows;
+  $("sizeTable").innerHTML = `<tr><th>Color</th>${ALL.map(s => `<th>${s}</th>`).join("")}<th>Total</th></tr>` +
+    Object.entries(SIZES).map(([c, sizes]) => {
+      let tot = 0;
+      const cells = ALL.map(s => { if (!sizes.includes(s)) return "<td>–</td>"; const n = src.reduce((a, r) => a + Number(r[c + " " + s] || 0), 0); tot += n; return `<td>${n}</td>`; }).join("");
+      return `<tr><td>${c} Heather</td>${cells}<td><b>${tot}</b></td></tr>`;
+    }).join("");
+  $("orderTable").innerHTML = `<tr><th>Order</th><th>Buyer</th><th>Player</th><th>Hoodies</th><th>Total</th><th>Placed</th><th>Paid</th></tr>` +
+    (rows.length ? rows.map(r => {
+      const items = Object.entries(SIZES).flatMap(([c, sizes]) => sizes.filter(s => Number(r[c + " " + s])).map(s => `${r[c + " " + s]} × ${c} ${s}`)).join("<br>");
+      const yes = r.Paid === "Yes";
+      return `<tr><td class="mono">${esc(r.Order)}</td>
+        <td class="wrap-cell"><b>${esc(r.Name)}</b><br>${esc(r.Email)}${r.Phone ? "<br>" + esc(r.Phone) : ""}${r.Notes ? "<br>Note: " + esc(r.Notes) : ""}</td>
+        <td>${esc(r.Player)}</td><td>${items}</td><td>${money(r.Total)}</td>
+        <td>${r.Placed ? new Date(r.Placed).toLocaleDateString("en-US", { month: "short", day: "numeric" }) : ""}</td>
+        <td><button class="paid${yes ? " yes" : ""}" type="button" data-id="${esc(r.Order)}" data-paid="${yes ? 0 : 1}">${yes ? "✓ Paid" : "Unpaid"}</button></td></tr>`;
+    }).join("") : `<tr><td colspan="7" style="color:var(--muted)">No orders yet.</td></tr>`);
+}
+
+$("login").addEventListener("submit", e => {
+  e.preventDefault(); key = $("pw").value.trim(); if (!key) return;
+  try { sessionStorage.setItem("raba-org", key); } catch (e) {}
+  $("loginBtn").disabled = true; $("loginBtn").textContent = "Loading…"; load();
+});
+$("refresh").onclick = () => load();
+$("signout").onclick = () => { forget(); $("pw").value = ""; showLogin(); };
+document.addEventListener("click", e => {
+  const b = e.target.closest("button.paid"); if (b) { b.disabled = true; b.textContent = "Saving…"; load({ action: "paid", id: b.dataset.id, paid: b.dataset.paid }); }
+  const f = e.target.closest(".seg button"); if (f) { filter = f.dataset.f; document.querySelectorAll(".seg button").forEach(x => x.setAttribute("aria-pressed", x === f)); render(); }
+});
+if (key) load(); else showLogin();
+</script>
+</body>
+</html>
