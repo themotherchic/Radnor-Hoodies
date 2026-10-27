@@ -591,7 +591,7 @@ $("contact").addEventListener("submit", async e => {
     id: orderId(), name, email, phone: $("cPhone").value.trim(), player: $("cPlayer").value.trim(), notes: $("cNotes").value.trim(),
     items: state.cart.map(l => ({ ...l })), units, total: units * PRICE, raba: units * RABA, status: "new", createdAt: new Date().toISOString()
   };
-  const note = `RABA hoodie ${order.id} ${name}: ${itemsShort(order.items)}`;
+  const note = `RABA Hoodie ${name}`;
   $("cfAmount").textContent = money(order.total);
   $("cfNote").textContent = note;
   $("copyNote").onclick = ev => copyText(note, ev.currentTarget);
